@@ -1,12 +1,20 @@
--------------------------------------------------
-# GCC 4.4.7 升级 GCC 4.8.2    
-cd /etc/yum.repos.d && wget http://people.centos.org/tru/devtools-2/devtools-2.repo    
-# yum 安装    
-yum install devtoolset-2-gcc devtoolset-2-binutils devtoolset-2-gcc-c++    
-# 备份  
-mv /usr/bin/gcc /usr/bin/gcc-4.4.7  
-mv /usr/bin/g++ /usr/bin/g++-4.4.7  
-mv /usr/bin/c++ /usr/bin/c++-4.4.7  
-ln -s /opt/rh/devtoolset-2/root/usr/bin/gcc /usr/bin/gcc  
-ln -s /opt/rh/devtoolset-2/root/usr/bin/c++ /usr/bin/c++  
-ln -s /opt/rh/devtoolset-2/root/usr/bin/g++ /usr/bin/g++  
+### cmake升级
+
+```javascript
+#CentOS7升级
+yum install epel-release -y
+yum remove cmake -y
+yum install cmake3 -y
+ln -s /usr/bin/cmake3 /usr/bin/cmake
+```
+
+### gcc 8.3升级
+
+```javascript
+#CentOS7
+yum -y install centos-release-scl
+yum -y install devtoolset-8-gcc devtoolset-8-gcc-c++ devtoolset-8-binutils
+echo "source /opt/rh/devtoolset-8/enable" >>/etc/profile
+source /etc/profile
+```
+
